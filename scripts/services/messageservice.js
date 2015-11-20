@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('chattyApp')
-  .factory('messageService', function ($http) {
+  .factory('MessageService', function ($http) {
     return {
       getMessages: function () {
         return $http.get('http://localhost:9001');

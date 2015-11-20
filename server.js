@@ -31,7 +31,7 @@ var handleRequest = function (req, res) {
       messages.push(JSON.parse(postData));
     });
 
-    res.end();
+    return res.end();
 
   }
 
@@ -42,10 +42,10 @@ var handleRequest = function (req, res) {
 
   } else if (req.method === 'OPTIONS') {
     res.statusCode = 200;
-    res.end();
+    return res.end();
   }
 
-
+  return res.end();
 }
 
 server.on('request', handleRequest).listen('9001');
