@@ -1,15 +1,22 @@
 'use strict';
 
 angular.module('chattyApp')
-  .controller('MainCtrl', function ( $scope, messageService ) {
-    messageService.getMessages().then(function ( response ) {
-      $scope.messages = response.data;
-    });
+  .controller('MainCtrl', function ($scope, messageService) {
 
-    $scope.addMessage = function ( message ) {
+    //hmm seems duplicated from messageCtrl, dblcheck this later
+    console.log('HELLOOoo');
+
+    function getM() {
+      messageService.getMessages().then(function (response) {
+        $scope.messages = response.data;
+      });
+    }
+
+    $scope.addMessage = function (message) {
+      console.log('test cakes');
       if (message) {
-        messageService.addMessage(message).then(function ( response ) {
-          $scope.messages = response.data;
+        messageService.addMessage(message).then(function (response) {
+          getM();
         });
       }
     };
@@ -19,4 +26,7 @@ angular.module('chattyApp')
       'AngularJS',
       'Karma'
     ];
+
+    getM();
+
   });
